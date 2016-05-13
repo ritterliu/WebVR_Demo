@@ -18,7 +18,7 @@
   <script src="./js/helvetiker_regular.typeface.js"></script>
 
   <script>
-  var scene, camera, renderer, effect, element, controls, word = "Ritter's VR World";
+  var scene, camera, renderer, effect, element, controls, word = "Ritter's VR World", cube;
   init();
 
   function init() {
@@ -63,7 +63,7 @@
     // Create box
     var geometry = new THREE.BoxGeometry(6, 6, 6);
     var material = new THREE.MeshNormalMaterial();
-    var cube = new THREE.Mesh(geometry, material);
+    cube = new THREE.Mesh(geometry, material);
     cube.position.set(-15, 30, 10);
     scene.add(cube);
 
@@ -102,7 +102,8 @@
     renderer.setSize(width, height);
     effect.setSize(width, height);
 
-    camera.updateProjectionMatrix();
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
 
     controls.update();
     effect.render(scene, camera);
